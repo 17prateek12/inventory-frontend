@@ -20,6 +20,9 @@ export const useCreateCustomer = () => {
         queryKey: ["customers"],
       });
     },
+    onError: (error: any) => {
+      console.error(error);
+    },
   });
 };
 
@@ -34,6 +37,9 @@ export const useDeleteCustomer = () => {
       queryClient.invalidateQueries({
         queryKey: ["customers"],
       });
+    },
+    onError: (error: any) => {
+      console.error(error);
     },
   });
 };

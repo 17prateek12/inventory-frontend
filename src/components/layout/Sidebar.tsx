@@ -7,6 +7,12 @@ import {
 
 import { NavLink } from "react-router-dom";
 
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+
 const links = [
   {
     name: "Dashboard",
@@ -30,10 +36,28 @@ const links = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+  open,
+  onClose,
+}: SidebarProps) {
   return (
-    <aside className="w-64 border-r bg-white">
-      <div className="p-6">
+    <>
+      {open && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside
+        className={`
+          fixed left-0 top-0 z-50 h-full w-64
+          border-r bg-white transition-transform
+          md:static md:translate-x-0
+          ${open ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        <div className="p-6">
         <h1 className="text-xl font-bold">
           Inventory System
         </h1>
@@ -61,6 +85,8 @@ export default function Sidebar() {
           );
         })}
       </nav>
-    </aside>
+      </aside>
+    </>
+
   );
 }

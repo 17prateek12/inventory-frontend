@@ -78,6 +78,14 @@ export default function CustomerForm() {
       >
         Create Customer
       </button>
+      {mutation.isError && (
+        <div className="mt-4 rounded border border-red-300 bg-red-50 p-3 text-red-600">
+          {
+            (mutation.error as any)?.response?.data?.detail ??
+            "Something went wrong"
+          }
+        </div>
+      )}
 
     </form>
   );

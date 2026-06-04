@@ -151,7 +151,14 @@ export default function ProductForm() {
       >
         Create Product
       </button>
-
+      {createMutation.isError && (
+        <p className="mt-3 text-red-500">
+          {
+            (createMutation.error as any)
+              ?.response?.data?.detail
+          }
+        </p>
+      )}
     </form>
   );
 }

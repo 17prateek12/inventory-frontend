@@ -32,7 +32,7 @@ export default function OrderForm() {
   ] = useState(1);
 
   function handleSubmit(
-    e: React.FormEvent
+    e: React.SubmitEvent
   ) {
 
     e.preventDefault();
@@ -79,7 +79,7 @@ export default function OrderForm() {
           </option>
 
           {customers?.map(
-            (customer:any) => (
+            (customer: any) => (
               <option
                 key={customer.id}
                 value={
@@ -110,7 +110,7 @@ export default function OrderForm() {
           </option>
 
           {products?.map(
-            (product:any) => (
+            (product: any) => (
               <option
                 key={product.id}
                 value={
@@ -146,7 +146,14 @@ export default function OrderForm() {
       >
         Create Order
       </button>
-
+      {createMutation.isError && (
+        <p className="mt-3 text-red-500">
+          {
+            (createMutation.error as any)
+              ?.response?.data?.detail
+          }
+        </p>
+      )}
     </form>
   );
 }

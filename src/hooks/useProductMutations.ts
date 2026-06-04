@@ -21,6 +21,9 @@ export const useCreateProduct = () => {
         queryKey: ["products"],
       });
     },
+    onError: (error: any) => {
+      console.error(error);
+    },
   });
 };
 
@@ -36,6 +39,9 @@ export const useDeleteProduct = () => {
       queryClient.invalidateQueries({
         queryKey: ["products"],
       });
+    },
+    onError: (error: any) => {
+      console.error(error);
     },
   });
 };

@@ -45,5 +45,8 @@ export const useDeleteOrder = () => {
         queryKey: ["orders"],
       });
     },
+    onError: (error: any) => {
+      console.error(error);
+    },
   });
 };
